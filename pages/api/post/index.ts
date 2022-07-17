@@ -5,11 +5,14 @@ import { allPostsQuery } from "../../../utils/queries"
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'GET'){
-    const query = allPostsQuery()
-
-    const data = await client.fetch(query)
-  }
+    if (req.method === 'GET'){
+      const query = allPostsQuery()
+  
+      const data = await client.fetch(query)
+      
+      res.json(data)
+    }
+ 
 }
 
 export default handler
