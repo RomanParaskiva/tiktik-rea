@@ -1,4 +1,6 @@
 import axios from 'axios'
+import NoResults from '../components/NoResults'
+import VideoCard from '../components/VideoCard'
 import { Video } from '../types'
 
 interface IProps {
@@ -6,8 +8,17 @@ interface IProps {
 }
 
 const Home = ({ videos }: IProps) => {
-  console.log(videos)
-  return <div className="text-3xl font-bold underline">TikTik</div>
+  return (
+    <div className="flex flex-col gap-10 videos h-full">
+      {videos.length ? (
+        videos.map((video: Video) => (
+          <VideoCard post={video} key={video._id} />
+        ))
+      ) : (
+        <NoResults text={'No Videos'} />
+      )}
+    </div>
+  )
 }
 
 export const getServerSideProps = async () => {
