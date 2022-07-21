@@ -11,6 +11,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const data = await client.fetch(query)
       
       res.json(data)
+    } else if (req.method === 'POST'){
+      const document = req.body
+
+      client.create(document).then(() => res.status(201).json('Success '))
     }
  
 }

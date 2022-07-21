@@ -11,9 +11,7 @@ export const createOrGetUser = async (response: any, addUser: any) => {
   // }).join(''))
 
   const { name, picture, sub }: {name: string, picture: string, sub: string} = jwtDecode(response.credential)
-
-  console.log(name, picture, sub);
-    
+  
   const user = {
     _id: sub,
     _type: 'user',
@@ -21,7 +19,7 @@ export const createOrGetUser = async (response: any, addUser: any) => {
     image: picture,
   }
   
-  // addUser(user)
+  addUser(user)
 
   await axios.post(`${BASE_URL}/api/auth`, user)
 }
