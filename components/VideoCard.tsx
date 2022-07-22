@@ -63,12 +63,13 @@ const VideoCard = ({ post }: IProps) => {
                     className='rounded-3xl relative'
                     onMouseEnter={() => setIsHover(true)}
                     onMouseLeave={() => setIsHover(false)}>
-                    <Link href='/'>
+                    <Link href={`/detail/${post._id}`}>
                         <video
                             loop
                             ref={videoRef}
-                            className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
-                            src={post.video.asset.url}
+                            className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px]
+                             rounded-2xl cursor-pointer bg-gray-100'
+                            src={post?.video?.asset.url}
                         >
                         </video>
                     </Link>

@@ -28,11 +28,11 @@ const Sidebar = () => {
       </div>
       {showSidebar && (
         <div className='xl:w-400 w-20 flex flex-col justify-start
-         mb-10 border-r-2 border-gray-100 xl:border-0 p-3'>
+         mb-10 border-r-2 border-gray-100 xl:border-0 px-3 py-2'>
           <div className='xl:border-b-2 border-gray-200 xl:pb-4'>
             <Link href="/">
               <div className={normalLink}>
-                <p className='text-2xl'>
+                <p className='text-2xl flex gap-3'>
                   <AiFillHome />
                   <span className='text-xl hidden xl:block'>
                     For You
@@ -41,20 +41,6 @@ const Sidebar = () => {
               </div>
             </Link>
           </div>
-
-          {!userProfile && (
-            <div className='px-2 py-4 hidden xl:block'>
-              <p className='text-gray-400'>
-                Log in to like and comment on videos
-              </p>
-              <div className='pr-4'>
-                <GoogleLogin
-                  onSuccess={() => { }}
-                  onError={() => { }}
-                />
-              </div>
-            </div>
-          )}
           <Discover />
           <SuggestedAccounts />
           <Footer />
