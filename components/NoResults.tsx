@@ -6,7 +6,7 @@ interface IProps {
 
 const NoResults = ({ text } : IProps) => {
   return (
-    <div>NoResults</div>
+    <div>{text}</div>
   )
 }
 
