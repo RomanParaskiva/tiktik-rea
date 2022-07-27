@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useAuthStore from '../store/authStore'
+import { IUser } from '../types'
+import Account from './Account'
+
 
 const SuggestedAccounts = () => {
+  const { fetchAllUsers, allUsers } = useAuthStore()
+
+  useEffect(() => {
+    fetchAllUsers()
+    console.log(allUsers);
+    
+  }, [fetchAllUsers])
+
   return (
-    <div>SuggestedAccounts</div>
+    <div className='xl:border-b-2 border-gray-200 pb-4'>
+      <p className='text-gray-500 font-semibold m-3
+       mt-4 hidden xl:block'>Suggested Accounts</p>
+
+      <div>
+        {allUsers.slice(0, 6).map((user: IUser) => (
+          <Account key={user._id} user={user} post={undefined}/>
+        ))}
+      </div>
+    </div>
   )
 }
 
