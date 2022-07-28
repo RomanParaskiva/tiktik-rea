@@ -1,11 +1,9 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { GoVerified } from 'react-icons/go'
 
 import useAuthStore from '../store/authStore'
 import NoResults from './NoResults'
 import { IUser } from '../types'
+import Account from './Account'
 
 interface IProps {
   isPostingComment: boolean,
@@ -23,7 +21,7 @@ interface IComment {
 }
 
 const Comments = ({ comment, setComment, addComment, comments, isPostingComment }: IProps) => {
-  
+
   const { userProfile, allUsers } = useAuthStore()
 
   return (
@@ -31,20 +29,23 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
      pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
       <div className='overflow-scroll lg:h-[475px]'>
         {comments?.length ? (
-          {comments.map((item, idx) => (
+          comments.map((item, idx) => (
             <>
               {allUsers.map((user: IUser) => (
-                user._id === (item.postBy._id || item.postBy.ref) && (
-                  <div 
-                    className='p-2 items-center'
-                    key={idx}
-                    >
-
+                user._id === (item.postedBy._id || item.postedBy._ref)
+                && (
+                  <div className='p-2 items-center' key={idx}>
+                    <div className='flex flex-col items-start gap-3'>
+                      <Account user={user} post={undefined} imageSize={34} />
+                      <div>
+                        <p>{item.comment}</p>
+                      </div>
                     </div>
+                  </div>
                 )
               ))}
             </>
-          ))}
+          ))
         ) : (
           <NoResults text="No comments yet!" />
         )}

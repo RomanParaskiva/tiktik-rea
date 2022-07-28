@@ -35,7 +35,7 @@ const VideoCard = ({ post }: IProps) => {
 
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
-            <Account post={post} user={undefined} />
+            <Account post={post} user={undefined} imageSize={64} />
 
             <div className='lg:ml-20 flex gap-4 relative'>
                 <div

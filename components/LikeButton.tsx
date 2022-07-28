@@ -13,14 +13,14 @@ const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
     const [alreadyLiked, setAlreadyLiked] = useState(false)
     const { userProfile }: any = useAuthStore()
     const filterLikes = likes?.filter((item) => item._ref === userProfile?._id)
-    
+
     useEffect(() => {
-        if(filterLikes?.length > 0){
+        if (filterLikes?.length > 0) {
             setAlreadyLiked(true)
         } else {
             setAlreadyLiked(false)
         }
-    },[likes])
+    }, [likes])
 
     return (
         <div className='flex gap-6'>
@@ -37,9 +37,12 @@ const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
                         <MdFavorite className='text-lg md:text-2xl' />
                     </div>
                 )}
-                <p className='text-md font-semibold'>
-                    {likes?.length || 0}
-                </p>
+                <div className='flex justify-center items-center bg-white 
+                relative top-[-10px] w-6 h-6 rounded-full border'>
+                    <span className='text-sm font-semibold'>
+                        {likes?.length || 0}
+                    </span>
+                </div>
             </div>
         </div>
     )

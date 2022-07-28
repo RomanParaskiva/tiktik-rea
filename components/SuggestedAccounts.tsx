@@ -18,9 +18,9 @@ const SuggestedAccounts = () => {
       <p className='text-gray-500 font-semibold m-3
        mt-4 hidden xl:block'>Suggested Accounts</p>
 
-      <div>
+      <div className='hidden xl:block'>
         {allUsers.slice(0, 6).map((user: IUser) => (
-          <Account key={user._id} user={user} post={undefined}/>
+          <Account key={user._id} user={user} post={undefined} imageSize={32}/>
         ))}
       </div>
     </div>
