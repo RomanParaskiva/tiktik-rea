@@ -9,7 +9,6 @@ const SuggestedAccounts = () => {
 
   useEffect(() => {
     fetchAllUsers()
-    console.log(allUsers);
     
   }, [fetchAllUsers])
 
