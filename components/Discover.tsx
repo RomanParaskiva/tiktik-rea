@@ -18,16 +18,16 @@ const Discover = () => {
       <p className='text-gray-500 font-semibold m-3 mt-4 hidden xl:block'>
         Popular Topics
       </p>
-      <div className='flex gap-3 flex-wrap'>
+      <div className='flex gap-3 flex-wrap justify-center xl:justify-start'>
         {topics.map((item) => (
           <Link href={`/?topic=${item.name}`} key={item.name}>
             <div className={`xl:border-2 hover:bg-primary 
-            px-3 py-2 rounded xl:rounded-full flex flex-col md:flex-row items-center 
-            gap-2 justify-center cursor-pointer` + topic == item.name ? activeTopicStyle : topicStyle}>
+            px-3 xl:py-2 rounded xl:rounded-full flex flex-col xl:flex-row items-center 
+            gap-2 justify-center cursor-pointer ${topic == item.name ? activeTopicStyle : topicStyle}`}>
               <span className='font-bold text-2xl xl:text-md'>
                 {item.icon}
               </span>
-              <span className='font-medium text-md capitalize'>
+              <span className='font-medium text-sm xl:text-md capitalize'>
                 {item.name}
               </span>
             </div>

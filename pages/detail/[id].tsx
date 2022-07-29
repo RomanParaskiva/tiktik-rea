@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
-import Link from 'next/link'
 
-import { GoVerified } from 'react-icons/go'
-import { MdOutlineCancel } from 'react-icons/md'
+import { MdOutlineCancel, MdComment } from 'react-icons/md'
 import { BsFillPlayFill } from 'react-icons/bs'
 import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi'
 
@@ -60,7 +57,7 @@ const Detail = ({ postDetails }: IProps) => {
     }
   }
 
-  const addComment = async (e:any) => {
+  const addComment = async (e: any) => {
     e.preventDefault()
 
     if (userProfile && comment) {
@@ -105,7 +102,7 @@ const Detail = ({ postDetails }: IProps) => {
             </video>
           </div>
 
-          <div className='absolute top-[45%] left=[45%] cursor-pointer'>
+          <div className='absolute top-[45%] left-[45%] cursor-pointer'>
             {!playing && (
               <button onClick={onVideoclick}>
                 <BsFillPlayFill className='text-white text-6xl lg:text-8xl' />
@@ -130,13 +127,13 @@ const Detail = ({ postDetails }: IProps) => {
 
       <div className='relative w-[1000px] md:w-[900px] lg:w-[700px]'>
         <div className='lg:mt-20 mt-10 px-5'>
-         <Account user={undefined} post={post} imageSize={32}/>
+          <Account user={undefined} post={post} imageSize={32} />
 
           <p className='px-10 text-lg text-gray-600'>
             {post.caption}
           </p>
 
-          <div className='mt-10 px-5'>
+          <div className='flex gap-6 mt-5 px-5'>
             {userProfile && (
               <LikeButton
                 likes={post.likes}
@@ -144,6 +141,24 @@ const Detail = ({ postDetails }: IProps) => {
                 handleDislike={() => handleLike(false)}
               />
             )}
+
+            <div className='flex gap-6'>
+              <div className='mt-4 flex flex-col justify-center 
+              items-center cursor-pointer'>
+              
+                  <div className='bg-primary rounded-full p-2 md:p-4'>
+                    <MdComment className='text-lg md:text-2xl' />
+                  </div>
+              
+                <div className='flex justify-center items-center bg-white 
+                      relative top-[-10px] w-6 h-6 rounded-full border'>
+                  <span className='text-sm font-semibold'>
+                    {post?.comments?.length || 0}
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <Comments

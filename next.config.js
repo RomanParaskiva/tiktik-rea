@@ -6,7 +6,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost', 'lh3.googleusercontent.com']
+    domains: ['localhost', 'lh3.googleusercontent.com', 'https://tiktik-rea.vercel.app']
   }
 }
 
